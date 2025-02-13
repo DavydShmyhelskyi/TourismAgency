@@ -1,0 +1,22 @@
+﻿<Window x:Class="ClientInterface.Orders"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ClientInterface"
+        mc:Ignorable="d"
+        Title="Orders" Height="450" Width="800">
+    <Grid>
+        <ListBox x:Name="OrdersListBox" 
+            Margin="0,10,0,69"
+            FontSize="14"
+            Background="#FFFFFF" 
+            BorderBrush="#007ACC" 
+            BorderThickness="1"
+            SelectionChanged="TermListBox_SelectionChanged" HorizontalAlignment="Center" Width="780"/>
+        <Button Content="Back" Margin="234,373,421,10" FontSize="16" FontWeight="Bold" Background="#007ACC" Foreground="White" BorderThickness="0" Cursor="Hand" Click="BackButton_Click"/>
+        <Button Name="RejectOrderButton" Content="Reject order" Margin="400,373,255,10" FontSize="16" FontWeight="Bold" Background="#007ACC" Foreground="White" BorderThickness="0" Cursor="Hand" Click="RejectOrderButton_Click"/>
+        <Button Name="PayForOrderButton"  Content="Pay for order" Margin="550,373,105,10" FontSize="16" FontWeight="Bold" Background="#007ACC" Foreground="White" BorderThickness="0" Cursor="Hand" Click="PayForOrderButton_Click"/>
+
+    </Grid>
+</Window>

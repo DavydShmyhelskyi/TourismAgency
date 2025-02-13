@@ -1,0 +1,29 @@
+﻿<Window x:Class="UserInterface.ContractsOp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:UserInterface"
+        mc:Ignorable="d"
+        Title="ContractsOp" Height="482" Width="800">
+    <Grid>
+        <Button Content="Terminate" Margin="10,236,493,170" FontSize="16" FontWeight="Bold" Background="Red" Foreground="White" BorderThickness="0" Cursor="Hand" Click="TerminateButton_Click"/>
+        <Button Content="Continue" Margin="10,301,493,105" FontSize="16" FontWeight="Bold" Background="LawnGreen" Foreground="White" BorderThickness="0" Cursor="Hand" Click="ContinueButton_Click"/>
+        <ListBox x:Name="ContractListBox" 
+            Margin="312,80,24,29"
+            FontSize="14"
+            Background="#FFFFFF" 
+            BorderBrush="#007ACC" 
+            BorderThickness="1"
+SelectionChanged="ContractListBox_SelectionChanged"/>
+        <Button Content="Get terminated" Height="40" Margin="10,14,493,380" FontSize="16" FontWeight="Bold" Background="#007ACC" Foreground="White" BorderThickness="0" Cursor="Hand" Click="GetTerminatedButton_Click"/>
+        <TextBox x:Name="NameTextBox_Copy6" Height="30" Margin="312,10,161,394"/>
+        <TextBox x:Name="NameTextBox_Copy7" Height="30" Margin="312,45,161,359"/>
+        <Button Content="Search by client" Margin="632,26,25,375" FontSize="16" FontWeight="Bold" Background="#007ACC" Foreground="White" BorderThickness="0" Cursor="Hand" Click="SearchByClientButton_Click"/>
+        <Button Content="Get contunied" Height="40" Margin="10,59,493,335" FontSize="16" FontWeight="Bold" Background="#007ACC" Foreground="White" BorderThickness="0" Cursor="Hand" Click="GetContuniedButton_Click"/>
+        <Button Content="Get all" Height="40" Margin="10,104,493,290" FontSize="16" FontWeight="Bold" Background="#007ACC" Foreground="White" BorderThickness="0" Cursor="Hand" Click="GetAllButton_Click"/>
+        <Button Content="Get my only" Height="40" Margin="10,149,493,245" FontSize="16" FontWeight="Bold" Background="#007ACC" Foreground="White" BorderThickness="0" Cursor="Hand" Click="GetMyButton_Click"/>
+        <Button Content="Back" Margin="10,397,493,10" FontSize="16" FontWeight="Bold" Background="#007ACC" Foreground="White" BorderThickness="0" Cursor="Hand" Click="BackButton_Click"/>
+
+    </Grid>
+</Window>

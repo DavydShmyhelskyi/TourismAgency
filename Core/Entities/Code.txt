@@ -1,0 +1,553 @@
+﻿
+Core:
+
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Core
+{
+    public class Addresses
+    {
+        [Key]
+        public int AddressID { get; set; }
+        public int CityID { get; set; }
+        public string Street { get; set; }
+        public string Building { get; set; }
+
+        //допоміжні поля
+        public Cities City { get; set; }
+        public ICollection<Clients> Clients { get; set; }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Core
+{
+    public class Cities
+    {
+        [Key]
+        public int CityID { get; set; }
+        public string CityName { get; set; }
+        public int CountryID { get; set; }
+
+        //допоміжні властивості
+        public Countries Country { get; set; }
+        public ICollection<Addresses> Addresses { get; set; }
+        public ICollection<Locations> Locations { get; set; }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Core
+{
+    public class Clients
+    {
+        [Key]
+        public int ClientID { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public DateTime BirthDate { get; set; }
+        public string Email { get; set; }
+        public string Phone { get; set; }
+        public int AddressID { get; set; }
+
+        //допоміжні поля
+        public Addresses Address { get; set; }
+        public ICollection<Orders> Orders { get; set; }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Core
+{
+    public class Contracts
+    {
+        [Key]
+        public int ContractID { get; set; }
+        public int OrderID { get; set; }
+        public DateTime SigningDate { get; set; }
+        public int ContractStatusID { get; set; }
+
+        // допоміжні поля
+        public Orders Order { get; set; }
+        public ContractStatuses ContractStatus { get; set; }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Core
+{
+    public class Contracts
+    {
+        [Key]
+        public int ContractID { get; set; }
+        public int OrderID { get; set; }
+        public DateTime SigningDate { get; set; }
+        public int ContractStatusID { get; set; }
+
+        // допоміжні поля
+        public Orders Order { get; set; }
+        public ContractStatuses ContractStatus { get; set; }
+    }
+}
+using System.ComponentModel.DataAnnotations;
+
+namespace Core
+{
+    public class Countries
+    {
+        [Key]
+        public int CountryID { get; set; }
+        public string CountryName { get; set; }
+
+        //допоміжні властивості
+        public ICollection<Cities> Cities { get; set; }
+    }
+}
+
+/*public async Task<IEnumerable<T>> GetAsync()
+{
+    return await _dbSet.ToListAsync();
+}
+
+public async Task SaveChangesAsync()
+{
+    await _context.SaveChangesAsync();
+}
+*/
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Core
+{
+    public class Locations
+    {
+        [Key]
+        public int LocationID { get; set; }
+        public int CityID { get; set; }
+        public string LocotionDescription { get; set; }
+        public string LocationName { get; set; }
+
+        //допоміжні поля
+        public Cities City { get; set; }
+        public ICollection<Tours> Tours { get; set; }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Core
+{
+    public class Orders
+    {
+        [Key]
+        public int OrderID { get; set; }
+        public int StatusID { get; set; }
+        public string OrderDate { get; set; }
+        public int TourID { get; set; }
+        public int UserID { get; set; } //from class Users
+        public int ClientID { get; set; } //from class Clients
+        public string OrderDetails { get; set; }
+        public int TotalAmount { get; set; }
+
+        // допоміжні поля
+
+        public Statuses Statuses { get; set; }
+        public Tours Tours { get; set; }
+        public Users Users { get; set; }
+        public Clients Clients { get; set; }
+        public ICollection<Transactions> Transactions { get; set; }
+        public ICollection<Contracts> Contracts { get; set; }
+
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Core
+{
+    public class PaimentMethods
+    {
+        [Key]
+        public int PaimentMethodID { get; set; }
+        public string PaimentMethodName { get; set; }
+
+        // допоміжні поля
+
+        public ICollection<Transactions> Transactions { get; set; } 
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Core
+{
+    public class Roles
+    {
+        [Key]
+        public int RoleID { get; set; }
+        public string RoleName { get; set; }
+
+        // допоміжні поля
+        public ICollection<Users> Users { get; set; }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Core
+{
+    public class Statuses
+    {
+        [Key]
+        public int StatusID { get; set; }
+        public string StatusName { get; set; }
+
+        // допоміжні поля
+        public ICollection<Orders> Orders { get; set; }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Core
+{
+    public class Tours
+    {
+        [Key]
+        public int TourID { get; set; }
+        public string TourName { get; set; }
+        public string TourDescription { get; set; }
+        public int LocationID { get; set; }
+        public DateTime StartDate { get; set; }
+        public DateTime EndDate { get; set; }
+        public int Price { get; set; }
+        public int AvailableSeats { get; set; }
+
+        // Navigation properties
+        public Locations Location { get; set; }
+        public ICollection<Orders> Orders { get; set; }
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Core
+{
+    public class Transactions
+    {
+        [Key]
+        public int TransactionID { get; set; }
+        public int OrderID { get; set; }
+        public int TransactionAmount { get; set; }
+        public DateTime TransactionDate { get; set; }
+        public int PaimentMethodID { get; set; }
+
+        // допоміжні поля
+        public PaimentMethods PaimentMethod { get; set; }
+        public Orders Order { get; set; }
+
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Core
+{
+    public class Users
+    {
+        [Key]
+        public int UserID { get; set; }
+        public int RoleID { get; set; }
+        public string UserName { get; set; }
+        public string Password { get; set; }
+        public string Email { get; set; }
+        public string FirstName { get; set; }
+        public string LastName { get; set; }
+        public string Phone { get; set; }
+
+        //допоміжні поля
+        public Roles Role { get; set; }
+        public ICollection<Orders> Orders { get; set; }
+    }
+}
+using Microsoft.EntityFrameworkCore;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Core
+{
+    public class TAContext : DbContext
+    {
+        public DbSet<Cities> Cities { get; set; }
+        public DbSet<Countries> Countries { get; set; }
+        public DbSet<Addresses> Addresses { get; set; }
+        public DbSet<Locations> Locations { get; set; }
+        public DbSet<Roles> Roles { get; set; }
+        public DbSet<Users> Users { get; set; }
+        public DbSet<Clients> Clients { get; set; }
+        public DbSet<Statuses> Statuses { get; set; }
+        public DbSet<Orders> Orderes { get; set; }
+        public DbSet<Tours> Tours { get; set; }
+        public DbSet<PaimentMethods> PaimentMethods { get; set; }
+        public DbSet<ContractStatuses> ContractStatuses { get; set; }
+
+        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        {
+            optionsBuilder.UseSqlServer("Server=localhost,1433;Database=TourismAgencyDB6;User Id=sa;Password=Braaah123!;TrustServerCertificate=True;");
+        }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Orders>()
+                .HasOne(o => o.Clients)
+                .WithMany(c => c.Orders)
+                .HasForeignKey(o => o.ClientID)
+                .OnDelete(DeleteBehavior.Restrict);  // Вимикаємо каскадне видалення
+
+            modelBuilder.Entity<Orders>()
+                .HasOne(o => o.Users)
+                .WithMany(u => u.Orders)
+                .HasForeignKey(o => o.UserID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Orders>()
+                .HasOne(o => o.Tours)
+                .WithMany(t => t.Orders)
+                .HasForeignKey(o => o.TourID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            modelBuilder.Entity<Orders>()
+                .HasOne(o => o.Statuses)
+                .WithMany(s => s.Orders)
+                .HasForeignKey(o => o.StatusID)
+                .OnDelete(DeleteBehavior.Restrict);
+        }
+
+
+    }
+}
+
+
+Repositorys: 
+
+namespace Repositorys
+{
+    public interface BaseInterface<T>
+    {
+        void Create(T entity);
+        IEnumerable<T> Get();
+        T Get(int id);
+        void Update(T entity);
+        void Delete(int id);
+        void SaveChanges();
+
+    }
+}
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace Repositorys
+{
+    using System.Collections.Generic;
+    using System.Linq;
+    using Microsoft.EntityFrameworkCore;
+
+    namespace Repositorys
+    {
+        public class BaseRepository<T> : BaseInterface<T> where T : class
+        {
+            protected readonly DbContext _context;
+            protected readonly DbSet<T> _dbSet;
+
+            public BaseRepository(DbContext context)
+            {
+                _context = context;
+                _dbSet = context.Set<T>();
+            }
+
+            public void Create(T entity)
+            {
+                _dbSet.Add(entity);
+            }
+
+            public IEnumerable<T> Get()
+            {
+                return _dbSet.ToList();
+            }
+
+            public T Get(int id)
+            {
+                return _dbSet.Find(id);
+            }
+
+            public void Update(T entity)
+            {
+                _dbSet.Update(entity);
+            }
+
+            public void Delete(int id)
+            {
+                var entity = _dbSet.Find(id);
+                if (entity != null)
+                {
+                    _dbSet.Remove(entity);
+                }
+            }
+
+            public void SaveChanges()
+            {
+                _context.SaveChanges();
+            }
+        }
+    }
+
+}
+using Microsoft.EntityFrameworkCore;
+using Repositorys.Repositorys;
+using System;
+using System.Collections.Generic;
+using System.Diagnostics.Contracts;
+using System.Diagnostics.Metrics;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using Core;    
+
+namespace Repositorys
+{
+    public class Repos
+    {
+        public class AddressRepository : BaseRepository<Addresses>
+        {
+            public AddressRepository(DbContext context) : base(context) { }
+        }
+
+        public class CityRepository : BaseRepository<Cities>
+        {
+            public CityRepository(DbContext context) : base(context) { }
+        }
+
+        public class ClientRepository : BaseRepository<Clients>
+        {
+            public ClientRepository(DbContext context) : base(context) { }
+        }
+
+        public class ContractRepository : BaseRepository<Clients>
+        {
+            public ContractRepository(DbContext context) : base(context) { }
+        }
+
+        public class ContractStatusRepository : BaseRepository<ContractStatuses>
+        {
+            public ContractStatusRepository(DbContext context) : base(context) { }
+        }
+
+        public class CountryRepository : BaseRepository<Countries>
+        {
+            public CountryRepository(DbContext context) : base(context) { }
+        }
+
+        public class LocationRepository : BaseRepository<Locations>
+        {
+            public LocationRepository(DbContext context) : base(context) { }
+        }
+
+        public class OrderRepository : BaseRepository<Orders>
+        {
+            public OrderRepository(DbContext context) : base(context) { }
+        }
+
+        public class PaimentMethodRepository : BaseRepository<PaimentMethods>
+        {
+            public PaimentMethodRepository(DbContext context) : base(context) { }
+        }
+
+        public class RoleRepository : BaseRepository<Roles>
+        {
+            public RoleRepository(DbContext context) : base(context) { }
+        }
+
+        public class StatusRepository : BaseRepository<Statuses>
+        {
+            public StatusRepository(DbContext context) : base(context) { }
+        }
+
+        public class TourRepository : BaseRepository<Tours>
+        {
+            public TourRepository(DbContext context) : base(context) { }
+        }
+
+        public class TransactionRepository : BaseRepository<Transactions>
+        {
+            public TransactionRepository(DbContext context) : base(context) { }
+        }
+
+        public class UserRepository : BaseRepository<Users>
+        {
+            public UserRepository(DbContext context) : base(context) { }
+        }
+    }
+}

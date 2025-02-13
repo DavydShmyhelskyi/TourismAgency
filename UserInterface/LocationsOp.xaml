@@ -1,0 +1,44 @@
+﻿<Window x:Class="UserInterface.LocationsOp"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        Title="LocationsOp" Height="598" Width="667">
+    <Grid Margin="0,0,62,-6">
+        <!-- Заголовок -->
+        <TextBlock Text="*** Locations ***" FontSize="32" Margin="20,10,20,400" Foreground="Black" HorizontalAlignment="Center"/>
+        <TextBlock Text="Country" FontSize="14" Foreground="Black" Margin="65,106,355,416"/>
+        <ComboBox x:Name="CountryComboBox" SelectionChanged="CountryComboBox_SelectionChanged" Margin="15,127,305,411"/>
+        <TextBlock Text="City" FontSize="14" Foreground="Black" Margin="65,177,355,344"/>
+        <ComboBox x:Name="CityComboBox" Margin="15,199,305,339"/>
+        <Button Content="Add City" Background="#007ACC" Foreground="White" BorderThickness="0" Click="AddCityButton_Click" Margin="15,249,305,289"/>
+        <TextBlock Text="Location Name" FontSize="14" Foreground="Black" Margin="65,299,355,223"/>
+        <TextBox x:Name="LocationNameTextBox" Margin="15,320,305,218"/>
+        <TextBlock Text="Description" FontSize="14" Foreground="Black" Margin="65,370,355,151"/>
+        <TextBox x:Name="LocationDescriptionTextBox" Margin="15,388,305,150" />
+        <Button Content="Add" FontSize="16" FontWeight="Bold" Background="#007ACC" Foreground="White" BorderThickness="0" Click="AddButton_Click" Margin="20,480,490,48"/>
+        <Button Content="Edit" FontSize="16" FontWeight="Bold" Background="#007ACC" Foreground="White" BorderThickness="0" Click="EditButton_Click" Margin="115,480,395,48"/>
+        <Button Content="Delete" FontSize="16" FontWeight="Bold" Background="#007ACC" Foreground="White" BorderThickness="0" Click="DeleteButton_Click" Margin="210,480,300,48"/>
+
+        <!-- Вибір країни -->
+
+        <!-- Вибір або додавання міста -->
+
+        <!-- Назва локації -->
+
+        <!-- Опис локації -->
+
+        <!-- Список локацій -->
+        <ListBox x:Name="LocationsListBox" 
+                 Margin="310,166,-55,34"
+                 FontSize="14"
+                 Background="#FFFFFF" 
+                 BorderBrush="#007ACC" 
+                 BorderThickness="1"
+                 SelectionChanged="LocationsListBox_SelectionChanged"/>
+
+        <!-- Кнопки управління -->
+
+        <!-- Пошук -->
+        <TextBox x:Name="SearchTextBox" Height="50" Margin="310,127,45,411" Text="Search by name"/>
+        <Button Content="Search" Margin="560,127,-55,411" FontSize="14" FontWeight="Bold" Background="#007ACC" Foreground="White" BorderThickness="0" Click="SearchButton_Click"/>
+    </Grid>
+</Window>
